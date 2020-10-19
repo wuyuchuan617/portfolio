@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            height: 450vh;
+            transition: .3s;
+
+        }
+
+        .wrap {
+            width: 1000px;
+
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        .wrap img {
+            width: 100%;
+        }
+
+        .circle-dot-1 {
+
+            top: 550px;
+            position: absolute;
+            left: 500px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #6C7989;
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+
+        .circle1 {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #6C7989;
+
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            opacity: .4;
+            transition: .5s;
+
+
+        }
+
+        .circle1.active {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            /* opacity: .4; */
+
+        }
+
+        .card1 {
+            width: 200px;
+            background-color: #EAE1D8;
+            position: absolute;
+            left: 430px;
+            top: 400px;
+            display: none;
+            margin: auto;
+            box-shadow: 10px 10px 15px rgba(108, 121, 137, 0.3);
+        }
+
+        .card1 p {
+            text-align: center;
+            margin-top: 30px;
+            color: #5F6B6B;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .card1 button {
+            display: block;
+            margin: auto;
+            margin-bottom: 30px;
+            margin-top: 15px;
+            background-color: #C77334;
+            color: #F3F4F4;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 15px;
+        }
+
+        .card1 img {
+            width: 80%;
+            display: block;
+            margin: auto
+        }
+
+
+
+        #top {
+
+            display: none;
+            position: absolute;
+            /* bottom: -100px; */
+            left: 60px;
+
+        }
+
+
+
+        .back a {
+            background-color: #5F6B6B;
+            width: 160px;
+            height: 50px;
+            color: #F3F4F4;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 50px;
+            margin: auto;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first" id="bookmark">1</div>
+    <div class="wrap">
+        <img src="../images/HQ_TS6A4805-2000x1333.jpg">
+
+
+    </div>
+
+    <div class="circle-dot-1">
+        <div class="circle"></div>
+        <div class="circle1 active"></div>
+    </div>
+
+
+    <div class="card1">
+        <p>RELY WELLING</p>
+        <img src="../images/fiber-lounge-chair-wood-base-master-fiber-lounge-chair-wood-base-1535538009-88104496.png">
+        <button class="btn">CHECK OUT</button>
+    </div>
+
+    <div class="back text-center">
+
+        <a href="#bookmark" id="top"> BACK TO TOP</a>
+
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+
+        // $(".circle1").hover(function () {
+        //     $(".card1").css("display", "block")
+        // });
+
+        document.querySelector(".circle1").addEventListener("mouseover", function () {
+            document.querySelector(".card1").style.display = "block";
+        })
+
+        $(".card1").hover(function () {
+            $(".card1").css("display", "block")
+        });
+
+        $(".card1").mouseleave(function () {
+            $(".card1").css("display", "none");
+
+        });
+
+
+        $(window).scroll(function () {
+            // console.log('hi');
+            console.log("scrollTop:", $(this).scrollTop());
+            console.log("scrollLeft:", $(this).scrollLeft());
+
+
+            if ($(this).scrollTop() < 150) {
+                $("body").css("background", "#5F6B6B")
+            }
+
+            if ($(this).scrollTop() > 150 && $(this).scrollTop() < 500) {
+                $("body").css("background", "#EAE1D8")
+            }
+
+            if ($(this).scrollTop() > 500) {
+                $("body").css("background", "#F3F4F4")
+            }
+
+            if ($(this).scrollTop() > 650) {
+                let bottom = $(this).scrollTop() * (-1) + 60;
+                console.log(bottom);
+                $("#top").css("display", "block").css("bottom", bottom)
+            }
+        });
+
+        let timeoutID = setInterval((() => $('.circle1').toggleClass('active')), 1000);
+
+        // $(window).scroll(function () {
+        //     let scrollTop = $(this).scrollTop();
+        //     console.log(scrollTop);
+        //     if (scrollTop > 500) {
+        //         $("#top").css("display", "block")
+        //     }
+
+        // });
+
+
+    </script>
+</body>
+
+</html>
